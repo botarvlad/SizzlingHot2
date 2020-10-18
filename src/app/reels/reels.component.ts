@@ -15,9 +15,4 @@ export class ReelsComponent implements OnInit {
   ngOnInit(): void {
     this.slotDisplay = this._reelsService.getReels();
   }
-
-  test() {
-    console.log(this.slotDisplay);
-  }
-
 }
