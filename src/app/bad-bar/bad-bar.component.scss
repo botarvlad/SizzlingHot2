@@ -1,0 +1,89 @@
+.outer-container {
+}
+
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto auto;
+    grid-gap: 5px;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 17px;
+}
+
+.credit {
+    position: relative;
+    display: grid;
+    background-color: #BCD02F;
+    padding: 10px;
+    text-align: center;
+
+    .credit-label {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+}
+
+.bet {
+    position: relative;
+    display: grid;
+    background-color: #BCD02F;
+    padding: 10px;
+    text-align: center;
+
+    .input-bet {
+        background-color: #ffffff;
+        text-align: center;
+    }
+}
+
+.win {
+    position: relative;
+    display: grid;
+    background-color: #BCD02F;
+    padding: 10px;
+    text-align: center;
+}
+
+.autoplay {
+    position: relative;
+    display: grid;
+    background-color: #BCD02F;
+    padding: 10px;
+    text-align: center;
+
+    .autoplay-bt {
+        background-color: #D0432F;
+        font-weight: 600;
+        font-size: 20px;
+    }
+}
+
+.gamble {
+    position: relative;
+    display: grid;
+    background-color: #BCD02F;
+    padding: 10px;
+    text-align: center;
+
+    .gamble-bt {
+        background-color: #D0432F;
+        font-weight: 600;
+        font-size: 20px;
+    }
+}
+
+.roll {
+    position: relative;
+    display: grid;
+    background-color: #BCD02F;
+    padding: 10px;
+    text-align: center;
+
+    .roll-bt {
+        background-color: #D0432F;
+        font-weight: 600;
+        font-size: 20px;
+    }
+}

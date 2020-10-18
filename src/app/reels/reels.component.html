@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="reels" *ngFor="let reel of slotDisplay">
+        <div class="reel" *ngFor="let symbol of reel">
+            <div class="card"><img class="fruit-image" [src]="symbol.src"></div>
+        </div>        
+    </div>
+</div>
