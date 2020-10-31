@@ -1,0 +1,41 @@
+<div class="reels-container">
+    <div class="reels" *ngFor="let reel of slotDisplay">
+        <div class="reel" *ngFor="let symbol of reel">
+            <div class="card"><img class="fruit-image" [src]="symbol.src"></div>
+        </div>        
+    </div>
+</div>
+
+<div class="outer-container">
+    <div class="container">
+        <div class="credit">
+            <label class="credit-label">Credit</label>
+            <label class="credit-display">{{credit}}</label>
+        </div>
+        
+        <div class="bet">
+            <label class="bet-label">Bet</label>
+            <!-- <input class="input-bet" [(ngModel)]="bet" type="number"> -->
+            <button class="input-bet" (click)="increaseBet()">{{bet}}</button>
+            <!-- <label class="input-bet">{{bet}}</label> -->
+        </div>
+    
+        <div class="win">
+            <label class="win-label">Win</label>
+            <label class="label-bet">$30</label>
+        </div>
+    
+        <div class="gamble">
+            <button class="gamble-bt" [disabled]=gambleBtn>Gamble</button>
+        </div>
+    
+        <div class="autoplay">
+            <button class="autoplay-bt">Autoplay</button>
+        </div>
+    
+    
+        <div class="roll">
+            <button class="roll-bt" (click)="spin()">Roll</button>
+        </div>
+    </div>
+</div>
