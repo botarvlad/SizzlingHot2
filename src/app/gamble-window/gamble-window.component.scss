@@ -1,0 +1,36 @@
+.container {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+.window {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    bottom: 0;
+    height: 40%;
+    width: 50%;
+    //margin: 10px 15px 10px 15px;
+
+    .red-button {
+        height: 50%;
+        width: 40%;
+        background-color: red;
+    }
+    .black-button {
+        height: 50%;
+        width: 40%;
+        background-color: black;
+    }
+}

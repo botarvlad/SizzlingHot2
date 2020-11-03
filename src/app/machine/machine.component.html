@@ -4,29 +4,32 @@
             <div class="card"><img class="fruit-image" [src]="symbol.src"></div>
         </div>        
     </div>
+    <div class="gamble-window" *ngIf="true">
+        <app-gamble-window></app-gamble-window>
+    </div>
 </div>
 
 <div class="outer-container">
     <div class="container">
         <div class="credit">
             <label class="credit-label">Credit</label>
-            <label class="credit-display">{{credit}}</label>
+            <label class="credit-display">{{credit | currency}}</label>
         </div>
         
         <div class="bet">
             <label class="bet-label">Bet</label>
             <!-- <input class="input-bet" [(ngModel)]="bet" type="number"> -->
-            <button class="input-bet" (click)="increaseBet()">{{bet}}</button>
+            <button class="input-bet" (click)="increaseBet()">{{bet | currency}}</button>
             <!-- <label class="input-bet">{{bet}}</label> -->
         </div>
     
         <div class="win">
             <label class="win-label">Win</label>
-            <label class="label-bet">$30</label>
+            <label class="label-bet">{{win | currency}}</label>
         </div>
     
         <div class="gamble">
-            <button class="gamble-bt" [disabled]=gambleBtn>Gamble</button>
+            <button class="gamble-bt" [disabled]=!gambleButton.state (click)="gamble()">gamble</button>
         </div>
     
         <div class="autoplay">
@@ -39,3 +42,4 @@
         </div>
     </div>
 </div>
+

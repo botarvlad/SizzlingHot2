@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 //import { BadBarComponent } from './bad-bar/bad-bar.component';
 import { MachineComponent } from './machine/machine.component';
 import { FormsModule } from '@angular/forms';
+import { GambleWindowComponent } from './gamble-window/gamble-window.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     //ReelsComponent,
     //BadBarComponent,
-    MachineComponent
+    MachineComponent,
+    GambleWindowComponent
   ],
   imports: [
     BrowserModule,
