@@ -10,7 +10,8 @@ export class BadBarService {
   credit = 20;
   bet = 1;
   win = 0;
-  private _gambleState: boolean = false;
+  gambleState: boolean = false;
+  gamblePressed: boolean = false;
 
   constructor(private _reelsService: ReelsService) { }
 
@@ -23,17 +24,36 @@ export class BadBarService {
   }
 
   betMoney() {
+    this.win = 0;
+    this.gambleState = false;
     this.credit -= this.bet;
-    let win = this.paylineFn();
-    if(win > 0) {
-      this._gambleState = true;
-      this.credit += win;
+    this.win = this.paylineFn();
+    if(this.win > 0) {
+      this.gambleState = true;
+      //this.credit += this.win;
     }
     return this.credit;
   }
+  // betMoney() {
+  //   this.credit -= this.bet;
+  //   let win = this.paylineFn();
+  //   if(win > 0) {
+  //     this._gambleState = true;
+  //     this.credit += win;
+  //   }
+  //   return this.credit;
+  // }
 
-  gamble() {
-    
+  gamble(val: boolean) {
+    this.gamblePressed = val;
+  }
+
+  addMoney(val: number) {
+    this.credit += val;
+  }
+
+  getWin() {
+    return this.win;
   }
 
   getCredit() {
@@ -44,9 +64,18 @@ export class BadBarService {
     this.bet = bet;
   }
 
-  get gambleState(): boolean {
-    return this._gambleState;
-  }
+  // get gambleState(): boolean {
+  //   return this._gambleState;
+  // }
+  // get gamblePressed(): boolean {
+  //   return this._gamblePressed;
+  // }
+  // set gambleState(val: boolean){
+  //   this.gambleState = val;
+  // }
+  // set gamblePressed(val: boolean){
+  //   this.gamblePressed = val;
+  // }
 
   paylineFn() {
     let newPayline;

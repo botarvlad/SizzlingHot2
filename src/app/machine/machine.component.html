@@ -4,8 +4,13 @@
             <div class="card"><img class="fruit-image" [src]="symbol.src"></div>
         </div>        
     </div>
-    <div class="gamble-window" *ngIf="true">
-        <app-gamble-window></app-gamble-window>
+    <div class="gamble-window" *ngIf="gambleButton.pressed">
+    <!-- <div class="gamble-window" *ngIf="true"> -->
+        <app-gamble-window 
+            (gambleState)="gamble($event)"
+            (gamblePressed)="gamble($event)"
+            (newCredit)="setCredit($event)"
+            (win)="setWin($event)"></app-gamble-window>
     </div>
 </div>
 
@@ -29,7 +34,7 @@
         </div>
     
         <div class="gamble">
-            <button class="gamble-bt" [disabled]=!gambleButton.state (click)="gamble()">gamble</button>
+            <button class="gamble-bt" [disabled]=!gambleButton.state (click)="gamble(true)">gamble</button>
         </div>
     
         <div class="autoplay">
@@ -38,7 +43,7 @@
     
     
         <div class="roll">
-            <button class="roll-bt" (click)="spin()">Roll</button>
+            <button class="roll-bt" [disabled]="gambleButton.state" (click)="spin()">Roll</button>
         </div>
     </div>
 </div>

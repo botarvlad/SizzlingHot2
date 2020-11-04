@@ -1,8 +1,10 @@
 <div class="container">
     <div class="window">
-        <div class="buttons">
-            <button class="red-button"></button>
-            <button class="black-button"></button>
+        <div *ngFor="let gItem of gambleHistory">{{gItem }}</div>
+        <div class="gamble-buttons" *ngIf="gambleAmount > 0">
+            <button class="red-button" (click)="gamble(gambleAmount, 1)"></button>
+            <button class="black-button" (click)="gamble(gambleAmount, 2)"></button>
         </div>
+        <button class="take-money" (click)="takeMoney(false)">Take Money!</button>
     </div>
 </div>

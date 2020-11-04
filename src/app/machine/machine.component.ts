@@ -1,7 +1,6 @@
 import { BadBarService } from './../services/bad-bar.service';
 import { Component, OnInit } from '@angular/core';
 import { ReelsService } from '../services/reels.service';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 interface GambleButton {
   state: boolean;
@@ -30,7 +29,7 @@ export class MachineComponent implements OnInit {
     this.getBet();
     this.gambleButton = {
       state: this._badBarService.gambleState,
-      pressed: false
+      pressed: this._badBarService.gamblePressed
     };
     this.win = 0;
   }
@@ -39,10 +38,25 @@ export class MachineComponent implements OnInit {
     this.slotDisplay = this._reelsService.getNewReels();
     this.credit = this._badBarService.betMoney();
     this.gambleButton.state = this._badBarService.gambleState;
+    this.win = this._badBarService.getWin();
   }
 
-  gamble() {
-    this.gambleButton.pressed = true;
+  gamble(val: boolean) {
+    this.gambleButton.state = val;
+    this.gambleButton.pressed = val;
+    console.log(this.gambleButton)
+  }
+
+  addMoney(val: number) {
+    this.credit += val;
+  }
+
+  setCredit(val: number) {
+    this.credit = val;
+  }
+
+  setWin(val: number) {
+    this.win = val;
   }
 
   getReels() {
