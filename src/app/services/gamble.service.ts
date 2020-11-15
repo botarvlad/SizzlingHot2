@@ -23,7 +23,6 @@ export class GambleService {
       }else{
         amount = 0;
         this.win = 0;
-        //this.infoSide.addMoney(0);
       }
     }
     else if(btnId === 2) {
@@ -33,7 +32,6 @@ export class GambleService {
       }else{
         amount = 0;
         this.win = 0;
-        //this.infoSide.addMoney(0);
       }
     }
     
@@ -41,7 +39,6 @@ export class GambleService {
       this.shiftGambleHistory();
     }
     this.gamblingHistory.push(randButton === 1 ? 'ROSU' : 'NEGRU');
-    //console.log(this.gamblingHistory);
   }
 
   returnWin(): number {

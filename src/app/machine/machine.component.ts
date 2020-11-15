@@ -43,10 +43,33 @@ export class MachineComponent implements OnInit {
     };
     this.win = 0;
   }
-  
-  spin() {
-    this.slotDisplay = this._reelsService.getNewReels();
+
+  reelsAnimation() {
+    return new Promise(resolve => {
+      let timerId = setInterval(() => this.slotDisplay = this._reelsService.getNewReels(), 100);
+      setTimeout(() => {
+            clearInterval(timerId);
+            resolve("Gata animatia");
+          }, 2500);
+    });
+  }
+
+  async getReelsWithAsync() {
     this.credit = this._badBarService.betMoney();
+    await this.reelsAnimation();
+    this.result();
+  }
+  
+  async spin() {
+    //this.getReelsWithAsync();
+    this.credit = this._badBarService.betMoney();
+    await this._reelsService.stockReelsWithAsync();
+    this.result();
+  }
+
+  result() {
+    //this.slotDisplay = this._reelsService.getNewReels();
+    this._badBarService.spin();
     this.gambleButton.state = this._badBarService.gambleState;
     this.win = this._badBarService.getWin();
   }
@@ -70,7 +93,8 @@ export class MachineComponent implements OnInit {
   }
 
   getReels() {
-    this.slotDisplay = this._reelsService.getReels();
+    //this.slotDisplay = this._reelsService.getReels();
+    this.slotDisplay = this._reelsService.getNewReels() 
   }
 
   getCredit() {

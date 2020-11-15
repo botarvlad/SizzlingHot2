@@ -24,25 +24,19 @@ export class BadBarService {
   }
 
   betMoney() {
+    this.credit -= this.bet;
+    return this.credit;
+  }
+
+  spin() {
     this.win = 0;
     this.gambleState = false;
-    this.credit -= this.bet;
+    //this.credit -= this.bet;
     this.win = this.paylineFn();
     if(this.win > 0) {
       this.gambleState = true;
-      //this.credit += this.win;
     }
-    return this.credit;
   }
-  // betMoney() {
-  //   this.credit -= this.bet;
-  //   let win = this.paylineFn();
-  //   if(win > 0) {
-  //     this._gambleState = true;
-  //     this.credit += win;
-  //   }
-  //   return this.credit;
-  // }
 
   gamble(val: boolean) {
     this.gamblePressed = val;
@@ -64,25 +58,12 @@ export class BadBarService {
     this.bet = bet;
   }
 
-  // get gambleState(): boolean {
-  //   return this._gambleState;
-  // }
-  // get gamblePressed(): boolean {
-  //   return this._gamblePressed;
-  // }
-  // set gambleState(val: boolean){
-  //   this.gambleState = val;
-  // }
-  // set gamblePressed(val: boolean){
-  //   this.gamblePressed = val;
-  // }
-
   paylineFn() {
     let newPayline;
     let win = this.win;
     for(let pos of PAYLINES) {
-      newPayline = [this._reelsService.reel1[pos[0]],this._reelsService.reel2[pos[1]],this._reelsService.reel3[pos[2]],
-      this._reelsService.reel4[pos[3]],this._reelsService.reel5[pos[4]]];
+      newPayline = [this._reelsService.reels[0][pos[0]],this._reelsService.reels[1][pos[1]],this._reelsService.reels[2][pos[2]],
+      this._reelsService.reels[3][pos[3]],this._reelsService.reels[4][pos[4]]];
       if(newPayline[0].id === newPayline[1].id && newPayline[1].id === newPayline[2].id) {
        win += (newPayline[0].currency * this.bet);
        console.log("its a match!");
