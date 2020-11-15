@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 export class ReelsService {
 
   reels = new Array(5);
+  isSpinning = false;
 
   constructor() { }
 
@@ -20,10 +21,10 @@ export class ReelsService {
   }
 
   async stockReelsWithAsync() {
-    await this.stockReel1();
+    await this.stockReels();
   }
 
-  stockReel1() {
+  stockReels() {
     return new Promise(resolve => {
       let timerId1 = setInterval(() => this.reels[0] = [new Symbol(), new Symbol(),new Symbol()], 100);
       setTimeout(() => {
@@ -44,8 +45,19 @@ export class ReelsService {
       let timerId5 = setInterval(() => this.reels[4] = [new Symbol(), new Symbol(),new Symbol()], 100);
       setTimeout(() => {
         clearInterval(timerId5);
+        clearInterval(skipper);
         resolve("Gata");
       }, 2500);
+      let skipper = setInterval(() => {
+        if(!this.isSpinning) {
+          clearInterval(timerId1);
+          clearInterval(timerId2);
+          clearInterval(timerId3);
+          clearInterval(timerId4);
+          clearInterval(timerId5);
+          resolve('Gata');
+        }
+      }, 50);
     })
   }
 

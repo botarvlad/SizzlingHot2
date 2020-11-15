@@ -20,18 +20,24 @@ export class MachineComponent implements OnInit {
   bet: number;
   gambleButton: GambleButton;
   win: number;
+  //isSpinning = this._reelsService.isSpinning;
 
   @HostListener('window: keydown', ['$event']) spaceEvent(event: any) {
     if(event.keyCode === 32 && this._badBarService.win === 0) {
-      this.spin();
+      if(!this._reelsService.isSpinning) {
+        this.spin();
+      }else if(this._reelsService.isSpinning) {
+        // opreste spinning-ul reel-urilor care inca se mai invart
+        this._reelsService.isSpinning = false;
+        console.log(this._reelsService.isSpinning);
+      }
     }else if(event.keyCode === 13 && this._badBarService.win !== 0) {
       this.gamble(true);
     }
   }
 
   constructor(private _reelsService: ReelsService,
-              private _badBarService: BadBarService,
-              private router: Router) { } 
+              private _badBarService: BadBarService) { } 
 
   ngOnInit(): void {
     this.getReels();
@@ -43,25 +49,9 @@ export class MachineComponent implements OnInit {
     };
     this.win = 0;
   }
-
-  reelsAnimation() {
-    return new Promise(resolve => {
-      let timerId = setInterval(() => this.slotDisplay = this._reelsService.getNewReels(), 100);
-      setTimeout(() => {
-            clearInterval(timerId);
-            resolve("Gata animatia");
-          }, 2500);
-    });
-  }
-
-  async getReelsWithAsync() {
-    this.credit = this._badBarService.betMoney();
-    await this.reelsAnimation();
-    this.result();
-  }
   
   async spin() {
-    //this.getReelsWithAsync();
+    this._reelsService.isSpinning = true;
     this.credit = this._badBarService.betMoney();
     await this._reelsService.stockReelsWithAsync();
     this.result();
@@ -72,6 +62,7 @@ export class MachineComponent implements OnInit {
     this._badBarService.spin();
     this.gambleButton.state = this._badBarService.gambleState;
     this.win = this._badBarService.getWin();
+    this._reelsService.isSpinning = false;
   }
 
   gamble(val: boolean) {
@@ -93,7 +84,6 @@ export class MachineComponent implements OnInit {
   }
 
   getReels() {
-    //this.slotDisplay = this._reelsService.getReels();
     this.slotDisplay = this._reelsService.getNewReels() 
   }
 
