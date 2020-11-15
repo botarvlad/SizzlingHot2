@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { BadBarService } from './../services/bad-bar.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ReelsService } from '../services/reels.service';
 
 interface GambleButton {
@@ -20,8 +21,17 @@ export class MachineComponent implements OnInit {
   gambleButton: GambleButton;
   win: number;
 
+  @HostListener('window: keydown', ['$event']) spaceEvent(event: any) {
+    if(event.keyCode === 32 && this._badBarService.win === 0) {
+      this.spin();
+    }else if(event.keyCode === 13 && this._badBarService.win !== 0) {
+      this.gamble(true);
+    }
+  }
+
   constructor(private _reelsService: ReelsService,
-              private _badBarService: BadBarService) { } 
+              private _badBarService: BadBarService,
+              private router: Router) { } 
 
   ngOnInit(): void {
     this.getReels();

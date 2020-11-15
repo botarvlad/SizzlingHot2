@@ -1,6 +1,7 @@
 import { BadBarService } from './../services/bad-bar.service';
 import { GambleService } from './../services/gamble.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gamble-window',
@@ -17,6 +18,16 @@ export class GambleWindowComponent implements OnInit {
   @Output() newCredit = new EventEmitter<number>();
   @Output() gambleState = new EventEmitter<boolean>();
   @Output() gamblePressed = new EventEmitter<boolean>();
+
+  @HostListener('window: keydown', ['$event']) spaceEvent(event: any) {
+    if(event.keyCode === 13) {
+      this.takeMoney();
+    }else if(event.keyCode === 37 && this.gambleAmount > 0) {
+      this.gamble(this.gambleAmount, 1);
+    }else if(event.keyCode === 39 && this.gambleAmount > 0) {
+      this.gamble(this.gambleAmount, 2);
+    }
+  }
 
   constructor(private _gambleService: GambleService,
               private _badBarService: BadBarService) { }
@@ -50,6 +61,7 @@ export class GambleWindowComponent implements OnInit {
     this.newCredit.emit(credit);
     this.gambleState.emit(false);
     this.gamblePressed.emit(false);
+    this._badBarService.win = 0;
   }
 
 }

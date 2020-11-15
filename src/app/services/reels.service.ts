@@ -19,9 +19,9 @@ export class ReelsService {
   constructor() { }
 
   getNewReels() {
-  this.reel1 = [new Symbol(), new Symbol(),new Symbol()];
-  this.reel2 = [new Symbol(), new Symbol(),new Symbol()];
-  this.reel3 = [new Symbol(), new Symbol(),new Symbol()];
+  this.reel1 = [new CustomSymbol(), new Symbol(),new Symbol()];
+  this.reel2 = [new CustomSymbol(), new Symbol(),new Symbol()];
+  this.reel3 = [new CustomSymbol(), new Symbol(),new Symbol()];
   this.reel4 = [new Symbol(), new Symbol(),new Symbol()];
   this.reel5 = [new Symbol(), new Symbol(),new Symbol()];
   this.reels = [this.reel1, this.reel2, this.reel3, this.reel4, this.reel5];
@@ -30,7 +30,5 @@ export class ReelsService {
 
   getReels() { 
     return this.reels;
-  }
-
-  
+  } 
 }

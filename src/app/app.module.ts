@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { MachineComponent } from './machine/machine.component';
 import { FormsModule } from '@angular/forms';
 import { GambleWindowComponent } from './gamble-window/gamble-window.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GambleWindowComponent } from './gamble-window/gamble-window.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [ReelsService, BadBarService],
   bootstrap: [AppComponent]

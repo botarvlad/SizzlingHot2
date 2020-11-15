@@ -85,6 +85,7 @@ export class BadBarService {
       this._reelsService.reel4[pos[3]],this._reelsService.reel5[pos[4]]];
       if(newPayline[0].id === newPayline[1].id && newPayline[1].id === newPayline[2].id) {
        win += (newPayline[0].currency * this.bet);
+       console.log("its a match!");
        if(newPayline[2].id === newPayline[3].id) {
          win += (newPayline[0].currency * this.bet);
          if(newPayline[3].id === newPayline[4].id) {

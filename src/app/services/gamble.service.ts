@@ -37,8 +37,11 @@ export class GambleService {
       }
     }
     
+    if(this.gamblingHistory.length > 6) {
+      this.shiftGambleHistory();
+    }
     this.gamblingHistory.push(randButton === 1 ? 'ROSU' : 'NEGRU');
-    console.log(randButton);
+    //console.log(this.gamblingHistory);
   }
 
   returnWin(): number {
@@ -47,5 +50,9 @@ export class GambleService {
 
   getGamblingHistory() {
     return this.gamblingHistory;
+  }
+
+  shiftGambleHistory() {
+      this.gamblingHistory.shift();
   }
 }

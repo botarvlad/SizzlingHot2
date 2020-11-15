@@ -1,8 +1,11 @@
-<div class="reels-container">
-    <div class="reels" *ngFor="let reel of slotDisplay">
-        <div class="reel" *ngFor="let symbol of reel">
-            <div class="card"><img class="fruit-image" [src]="symbol.src"></div>
-        </div>        
+<div class="machine-container">
+    <div class="reels-container" *ngIf="!gambleButton.pressed">
+    <!-- <div class="reels-container" *ngIf="false"> -->
+        <div class="reels" *ngFor="let reel of slotDisplay">
+            <div class="reel" *ngFor="let symbol of reel">
+                <div class="card"><img class="fruit-image" [src]="symbol.src"></div>
+            </div>        
+        </div>
     </div>
     <div class="gamble-window" *ngIf="gambleButton.pressed">
     <!-- <div class="gamble-window" *ngIf="true"> -->
@@ -14,37 +17,37 @@
     </div>
 </div>
 
-<div class="outer-container">
-    <div class="container">
-        <div class="credit">
-            <label class="credit-label">Credit</label>
-            <label class="credit-display">{{credit | currency}}</label>
-        </div>
-        
-        <div class="bet">
-            <label class="bet-label">Bet</label>
-            <!-- <input class="input-bet" [(ngModel)]="bet" type="number"> -->
-            <button class="input-bet" (click)="increaseBet()">{{bet | currency}}</button>
-            <!-- <label class="input-bet">{{bet}}</label> -->
-        </div>
+<div class="bad-bar-container">
+    <div class="credit">
+        <label class="credit-label">Credit</label>
+        <label class="credit-display">{{credit | currency}}</label>
+    </div>
     
-        <div class="win">
-            <label class="win-label">Win</label>
-            <label class="label-bet">{{win | currency}}</label>
-        </div>
-    
-        <div class="gamble">
-            <button class="gamble-bt" [disabled]=!gambleButton.state (click)="gamble(true)">gamble</button>
-        </div>
-    
-        <div class="autoplay">
-            <button class="autoplay-bt">Autoplay</button>
-        </div>
-    
-    
-        <div class="roll">
-            <button class="roll-bt" [disabled]="gambleButton.state" (click)="spin()">Roll</button>
-        </div>
+    <div class="bet">
+        <label class="bet-label">Bet</label>
+        <!-- <input class="input-bet" [(ngModel)]="bet" type="number"> -->
+        <button class="input-bet" (click)="increaseBet()">{{bet | currency}}</button>
+        <!-- <label class="input-bet">{{bet}}</label> -->
+    </div>
+
+    <div class="win">
+        <label class="win-label">Win</label>
+        <label class="label-bet">{{win | currency}}</label>
+    </div>
+
+    <div class="gamble">
+        <button class="gamble-bt" [disabled]=!gambleButton.state (click)="gamble(true)">gamble</button>
+    </div>
+
+    <div class="autoplay">
+        <button class="autoplay-bt">Autoplay</button>
+    </div>
+
+
+    <div class="roll">
+        <button class="roll-bt" [disabled]="gambleButton.state" (click)="spin()">Roll</button>
+        <!-- <button class="roll-bt" [disabled]="!rollButton.clicked" (click)="skip()">Skip anim</button> -->
     </div>
 </div>
+
 

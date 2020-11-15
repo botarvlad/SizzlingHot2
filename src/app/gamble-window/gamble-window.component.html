@@ -1,10 +1,15 @@
 <div class="container">
-    <div class="window">
-        <div *ngFor="let gItem of gambleHistory">{{gItem }}</div>
-        <div class="gamble-buttons" *ngIf="gambleAmount > 0">
+        <!-- <div *ngFor="let gItem of gambleHistory">{{gItem + ""}}</div> -->
+        <div class="gamble-history" *ngFor="let gItem of gambleHistory">
+            <!-- <div class="gamble-row">Rosu</div>
+            <div class="gamble-row">Rosu</div> -->
+            <div class="gamble-row" [ngClass]="{ 'red': gItem === 'ROSU',
+            'black': gItem === 'NEGRU' }"></div>
+        </div>
+        <!-- <div class="gamble-buttons" *ngIf="gambleAmount > 0"> -->
+        <!-- <div class="gamble-buttons"> -->
             <button class="red-button" (click)="gamble(gambleAmount, 1)"></button>
             <button class="black-button" (click)="gamble(gambleAmount, 2)"></button>
-        </div>
-        <button class="take-money" (click)="takeMoney(false)">Take Money!</button>
-    </div>
+            <button class="take-money" (click)="takeMoney()">Take Money</button>
+        <!-- </div> -->
 </div>

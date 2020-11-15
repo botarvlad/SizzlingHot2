@@ -1,120 +1,130 @@
-.reels-container {
-    display: flex;
-    justify-content: center;
-    padding: 5px;
+.machine-container {
+    //width: 900px;
+    //height: 500px;
+
+    .reels-container {
+        display: flex;
+        justify-content: center;
+        //padding: 5px;
+        width: 100%;
+    
+        //border: 5px solid brown;
+        .reels {
+            display: grid;
+            grid-template-rows: auto auto auto auto auto;
+            width: 100%;
+    
+            .card {
+                margin-left: 5px;
+                margin-right: 5px;
+                margin-bottom: -4px;
+            
+                .fruit-image {
+                        width: 100%;
+                }
+            }
+        }
+    
+    }
+        
+    .gamble-window {
+        display: flex;
+        justify-content: center;
+    
+        app-gamble-window {
+            width: 100%;
+            height: 372px;
+        }
+        //border: 1px solid black;
+    }
 }
 
-.reels {
-    display: grid;
-    grid-template-rows: auto auto auto auto auto;
-}
 
-.reel {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-column-gap: 3px;
-}
 
-.fruit-image {
-    margin-bottom: -4px;
-    max-height: 133px;
-    max-width: 133px;
-    min-width: 133px;
-    min-height: 133px;
-}
-
-.outer-container {
-}
-
-.container {
+.bad-bar-container {
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
     grid-template-rows: auto auto;
     grid-template-columns: auto auto auto;
     grid-gap: 5px;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 17px;
-}
+    //margin-left: 5px;
+    margin-right: 5px;
+    width: 100%;
+    padding-top: 17px;
 
-.credit {
-    position: relative;
-    display: grid;
-    background-color: #BCD02F;
-    padding: 10px;
-    text-align: center;
-
-    .credit-label {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
+    .credit {
+        position: relative;
+        display: grid;
+        background-color: #BCD02F;
+        padding: 10px;
+        text-align: center;
+    
+        .credit-label {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
     }
-}
 
-.bet {
-    position: relative;
-    display: grid;
-    background-color: #BCD02F;
-    padding: 10px;
-    text-align: center;
+    .bet {
+        position: relative;
+        display: grid;
+        background-color: #BCD02F;
+        padding: 10px;
+        text-align: center;
+    
+        .input-bet {
+            background-color: #ffffff;
+            text-align: center;
+        }
+    }
 
-    .input-bet {
-        background-color: #ffffff;
+    .win {
+        position: relative;
+        display: grid;
+        background-color: #BCD02F;
+        padding: 10px;
         text-align: center;
     }
-}
-
-.win {
-    position: relative;
-    display: grid;
-    background-color: #BCD02F;
-    padding: 10px;
-    text-align: center;
-}
-
-.autoplay {
-    position: relative;
-    display: grid;
-    background-color: #BCD02F;
-    padding: 10px;
-    text-align: center;
-
-    .autoplay-bt {
-        background-color: #D0432F;
-        font-weight: 600;
-        font-size: 20px;
+    
+    .autoplay {
+        position: relative;
+        display: grid;
+        background-color: #BCD02F;
+        padding: 10px;
+        text-align: center;
+    
+        .autoplay-bt {
+            background-color: #D0432F;
+            font-weight: 600;
+            font-size: 20px;
+        }
     }
-}
-
-.gamble {
-    position: relative;
-    display: grid;
-    background-color: #BCD02F;
-    padding: 10px;
-    text-align: center;
-
-    .gamble-bt {
-        background-color: #D0432F;
-        font-weight: 600;
-        font-size: 20px;
+    
+    .gamble {
+        position: relative;
+        display: grid;
+        background-color: #BCD02F;
+        padding: 10px;
+        text-align: center;
+    
+        .gamble-bt {
+            background-color: #D0432F;
+            font-weight: 600;
+            font-size: 20px;
+        }
     }
-}
-
-.roll {
-    position: relative;
-    display: grid;
-    background-color: #BCD02F;
-    padding: 10px;
-    text-align: center;
-
-    .roll-bt {
-        background-color: #D0432F;
-        font-weight: 600;
-        font-size: 20px;
+    
+    .roll {
+        position: relative;
+        display: grid;
+        background-color: #BCD02F;
+        padding: 10px;
+        text-align: center;
+    
+        .roll-bt {
+            background-color: #D0432F;
+            font-weight: 600;
+            font-size: 20px;
+        }
     }
-}
-.gamble-window {
-    position: absolute;
-    height: 50%;
-    width: 79%;
-    border: 1px solid black;
 }
