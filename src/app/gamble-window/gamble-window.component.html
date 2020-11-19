@@ -3,8 +3,9 @@
         <div class="gamble-history" *ngFor="let gItem of gambleHistory">
             <!-- <div class="gamble-row">Rosu</div>
             <div class="gamble-row">Rosu</div> -->
-            <div class="gamble-row" [ngClass]="{ 'red': gItem === 'ROSU',
-            'black': gItem === 'NEGRU' }"></div>
+            <!-- <div class="gamble-row" [ngClass]="{ 'red': gItem === 'ROSU',
+            'black': gItem === 'NEGRU' }"></div> -->
+            <div class="gamble-row"><img class="ace-card" [src]="gItem"></div>
         </div>
         <!-- <div class="gamble-buttons" *ngIf="gambleAmount > 0"> -->
         <!-- <div class="gamble-buttons"> -->

@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { BadBarService } from './../services/bad-bar.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ReelsService } from '../services/reels.service';
@@ -20,7 +19,7 @@ export class MachineComponent implements OnInit {
   bet: number;
   gambleButton: GambleButton;
   win: number;
-  //isSpinning = this._reelsService.isSpinning;
+  isSpinning = this._reelsService.getIsSpinning();
 
   @HostListener('window: keydown', ['$event']) spaceEvent(event: any) {
     if(event.keyCode === 32 && this._badBarService.win === 0) {
@@ -29,7 +28,7 @@ export class MachineComponent implements OnInit {
       }else if(this._reelsService.isSpinning) {
         // opreste spinning-ul reel-urilor care inca se mai invart
         this._reelsService.isSpinning = false;
-        console.log(this._reelsService.isSpinning);
+        this.isSpinning = this._reelsService.getIsSpinning();
       }
     }else if(event.keyCode === 13 && this._badBarService.win !== 0) {
       this.gamble(true);
@@ -52,6 +51,7 @@ export class MachineComponent implements OnInit {
   
   async spin() {
     this._reelsService.isSpinning = true;
+    this.isSpinning = this._reelsService.getIsSpinning();
     this.credit = this._badBarService.betMoney();
     await this._reelsService.stockReelsWithAsync();
     this.result();
@@ -63,12 +63,12 @@ export class MachineComponent implements OnInit {
     this.gambleButton.state = this._badBarService.gambleState;
     this.win = this._badBarService.getWin();
     this._reelsService.isSpinning = false;
+    this.isSpinning = this._reelsService.getIsSpinning();
   }
 
   gamble(val: boolean) {
     this.gambleButton.state = val;
     this.gambleButton.pressed = val;
-    console.log(this.gambleButton)
   }
 
   addMoney(val: number) {

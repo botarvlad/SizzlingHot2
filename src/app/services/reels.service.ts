@@ -64,4 +64,8 @@ export class ReelsService {
   getReels() { 
     return this.reels;
   } 
+
+  getIsSpinning() {
+    return this.isSpinning;
+  }
 }

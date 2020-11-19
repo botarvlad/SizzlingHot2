@@ -1,9 +1,15 @@
 <div class="machine-container">
     <div class="reels-container" *ngIf="!gambleButton.pressed">
     <!-- <div class="reels-container" *ngIf="false"> -->
-        <div class="reels" *ngFor="let reel of slotDisplay">
-            <div class="reel" *ngFor="let symbol of reel">
-                <div class="card"><img class="fruit-image" [src]="symbol.src"></div>
+        <div class="reels" *ngFor="let reel of slotDisplay, index as i">
+            <div class="reel" [ngClass]="{
+                'winner': symbol.isWinner
+            }"  *ngFor="let symbol of reel, index as j">
+                <div class="card">
+                    <img class="fruit-image" 
+                         
+                         [src]="symbol.src">
+                </div>
             </div>        
         </div>
     </div>
@@ -45,7 +51,7 @@
 
 
     <div class="roll">
-        <button class="roll-bt" [disabled]="gambleButton.state" (click)="spin()">Roll</button>
+        <button class="roll-bt" [disabled]="gambleButton.state || isSpinning" (click)="spin()">Roll</button>
         <!-- <button class="roll-bt" [disabled]="!rollButton.clicked" (click)="skip()">Skip anim</button> -->
     </div>
 </div>

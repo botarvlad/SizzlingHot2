@@ -1,7 +1,7 @@
+import { Card } from './../machineData/card';
 import { BadBarService } from './../services/bad-bar.service';
 import { GambleService } from './../services/gamble.service';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gamble-window',
@@ -14,6 +14,10 @@ export class GambleWindowComponent implements OnInit {
   blackButton = 2;
   gambleHistory: string[] = [];
   gambleAmount: number;
+  card: Card = {
+    number: null,
+    image: ""
+  }
   @Output() win = new EventEmitter<number>();
   @Output() newCredit = new EventEmitter<number>();
   @Output() gambleState = new EventEmitter<boolean>();
@@ -34,25 +38,21 @@ export class GambleWindowComponent implements OnInit {
 
   ngOnInit(): void {
     this.gambleAmount = this._badBarService.win;
-    console.log(this.gambleAmount);
     this.gambleHistory = this._gambleService.getGamblingHistory();
   }
 
   gamble(amount: number, btnId: number) {
     if(btnId === 1) {
-      this._gambleService.gamble(amount, btnId);
+      this.card = this._gambleService.gamble(amount, btnId);
       this.gambleAmount = this._gambleService.returnWin();
-      console.log(this.gambleAmount);
       this.win.emit(this.gambleAmount);
     }
     else if(btnId === 2) {
-      this._gambleService.gamble(amount, btnId);
+      this.card = this._gambleService.gamble(amount, btnId);
       this.gambleAmount = this._gambleService.returnWin();
-      console.log(this.gambleAmount);
       this.win.emit(this.gambleAmount);
     }
     this.gambleHistory = this._gambleService.getGamblingHistory();
-    console.log(this.gambleHistory);
   }
 
   takeMoney() {
