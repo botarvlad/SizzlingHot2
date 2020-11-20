@@ -2,6 +2,7 @@ import { Card } from './../machineData/card';
 import { BadBarService } from './../services/bad-bar.service';
 import { GambleService } from './../services/gamble.service';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-gamble-window',
@@ -41,14 +42,17 @@ export class GambleWindowComponent implements OnInit {
     this.gambleHistory = this._gambleService.getGamblingHistory();
   }
 
-  gamble(amount: number, btnId: number) {
+  async gamble(amount: number, btnId: number) {
+    let card: Card;// = { number: null, image: "" };
     if(btnId === 1) {
-      this.card = this._gambleService.gamble(amount, btnId);
+      this._gambleService.gamble(amount, btnId);
+      this.card = this._gambleService.getCard();
       this.gambleAmount = this._gambleService.returnWin();
       this.win.emit(this.gambleAmount);
     }
     else if(btnId === 2) {
-      this.card = this._gambleService.gamble(amount, btnId);
+      this._gambleService.gamble(amount, btnId);
+      this.card = this._gambleService.getCard();
       this.gambleAmount = this._gambleService.returnWin();
       this.win.emit(this.gambleAmount);
     }

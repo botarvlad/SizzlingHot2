@@ -8,9 +8,11 @@ export class GambleService {
 
   redButton = 1;
   blackButton = 2;
-  gamblingHistory: string[] = [];
+  gamblingHistory: string[] = ['../../assets/images/aceOfSpades.png','../../assets/images/aceOfSpades.png',
+  '../../assets/images/aceOfHearts.png','../../assets/images/aceOfSpades.png','../../assets/images/aceOfHearts.png',
+  '../../assets/images/aceOfHearts.png'];
   win: number;
-  //card: Card;
+  card: Card;
 
   constructor() { }
 
@@ -38,13 +40,18 @@ export class GambleService {
         this.win = 0;
       }
     }
+    this.gamblingHistory.push(card.number === 1 ? '../../assets/images/aceOfHearts.png' : '../../assets/images/aceOfSpades.png');
     
-    if(this.gamblingHistory.length > 6) {
+    if(this.gamblingHistory.length > 5) {
       this.shiftGambleHistory();
     }
     // this.gamblingHistory.push(card.number === 1 ? 'ROSU' : 'NEGRU');
-    this.gamblingHistory.push(card.number === 1 ? '../../assets/images/aceOfHearts.png' : '../../assets/images/aceOfSpades.png');
-    return card;
+    //return card;
+    this.card = card;
+  }
+
+  getCard() {
+    return this.card;
   }
 
   returnWin(): number {

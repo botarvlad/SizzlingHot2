@@ -17,23 +17,39 @@
 
         width: 100%;
         height: 100%;
-        //border: 2px solid black;
 
         .gamble-row {
-            width: 75%;
-            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             .ace-card {
-                width: 100%;
-                height: 100%;
+                width: 90%;
+                height: 90%;
             }
             //background-color: rgba($color: black, $alpha: 0.5);
-            &.red {
-                background-color: red;
-            }
-            &.black {
-                background-color: black;
-            }
+            // &.red {
+            //     background-color: red;
+            // }
+            // &.black {
+            //     background-color: black;
+            // }
+        }
+    }
+
+    .gamble-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        grid-row-start: 1;
+        grid-column-start: 7;
+        //width: 50%;
+        //height: 50%;
+
+        .card-back {
+            width: 90%;
+            height: 50%;
         }
     }
     .gamble-buttons {

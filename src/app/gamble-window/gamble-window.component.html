@@ -7,6 +7,17 @@
             'black': gItem === 'NEGRU' }"></div> -->
             <div class="gamble-row"><img class="ace-card" [src]="gItem"></div>
         </div>
+        <div class="gamble-card">
+            <div class="gambler-row">
+                <img class="card-back" [src]="'../../assets/images/blueBackCard.png'">
+            </div>
+            <!-- <div class="gambler-row" *ngIf="card.number === 1">
+                <img class="card-back" [src]="'../../assets/images/aceOfHearts.png'">
+            </div>
+            <div class="gambler-row" *ngIf="card.number === 2">
+                <img class="card-back" [src]="'../../assets/images/aceOfSpades.png'">
+            </div> -->
+        </div>
         <!-- <div class="gamble-buttons" *ngIf="gambleAmount > 0"> -->
         <!-- <div class="gamble-buttons"> -->
             <button class="red-button" (click)="gamble(gambleAmount, 1)"></button>
