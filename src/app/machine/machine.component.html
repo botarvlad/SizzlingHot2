@@ -24,36 +24,38 @@
 </div>
 
 <div class="bad-bar-container">
-    <div class="credit">
-        <label class="credit-label">Credit</label>
-        <label class="credit-display">{{credit | currency}}</label>
-    </div>
+    <!-- <div class="bad-bar"> -->
+        <div class="credit">
+            <label class="credit-label">Credit</label>
+            <label class="credit-display">{{credit | currency}}</label>
+        </div>
+        
+        <div class="bet">
+            <label class="bet-label">Bet</label>
+            <!-- <input class="input-bet" [(ngModel)]="bet" type="number"> -->
+            <button class="input-bet" (click)="increaseBet()">{{bet | currency}}</button>
+            <!-- <label class="input-bet">{{bet}}</label> -->
+        </div>
     
-    <div class="bet">
-        <label class="bet-label">Bet</label>
-        <!-- <input class="input-bet" [(ngModel)]="bet" type="number"> -->
-        <button class="input-bet" (click)="increaseBet()">{{bet | currency}}</button>
-        <!-- <label class="input-bet">{{bet}}</label> -->
-    </div>
-
-    <div class="win">
-        <label class="win-label">Win</label>
-        <label class="label-bet">{{win | currency}}</label>
-    </div>
-
-    <div class="gamble">
-        <button class="gamble-bt" [disabled]=!gambleButton.state (click)="gamble(true)">gamble</button>
-    </div>
-
-    <div class="autoplay">
-        <button class="autoplay-bt">Autoplay</button>
-    </div>
-
-
-    <div class="roll">
-        <button class="roll-bt" [disabled]="gambleButton.state || isSpinning" (click)="spin()">Roll</button>
-        <!-- <button class="roll-bt" [disabled]="!rollButton.clicked" (click)="skip()">Skip anim</button> -->
-    </div>
+        <div class="win">
+            <label class="win-label">Win</label>
+            <label class="label-bet">{{win | currency}}</label>
+        </div>
+    
+        <div class="gamble">
+            <button class="gamble-bt" [disabled]=!gambleButton.state (click)="gamble(true)">gamble</button>
+        </div>
+    
+        <div class="autoplay">
+            <button class="autoplay-bt">Autoplay</button>
+        </div>
+    
+    
+        <div class="roll">
+            <button class="roll-bt" [disabled]="gambleButton.state || isSpinning" (click)="spin()">Roll</button>
+            <!-- <button class="roll-bt" [disabled]="!rollButton.clicked" (click)="skip()">Skip anim</button> -->
+        </div>
+    <!-- </div> -->
 </div>
 
 
