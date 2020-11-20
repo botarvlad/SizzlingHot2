@@ -1,8 +1,24 @@
 <div class="main-view">
   
   <div class="topbar">
-    <h1>SizzlingHot</h1>
-    <h3>Bet all and lose again</h3>
+    <button class="controlls-btn" (click)="seeControlls()">See keyboard controlls</button>
+    <div class="help-box" *ngIf="toggle">
+      <div class="help-text-left">
+        <div class="text">
+          In main window:  <br><br>
+          SPACEBAR => roll<br>
+          ENTER => gamble<br>
+        </div>
+      </div>
+      <div class="help-text-right">
+        <div class="text">
+          In gamble window: <br> <br>
+          left arrow => red button <br> 
+          right arrow => black button <br>
+          ENTER => take money
+        </div>
+      </div>
+    </div>
   </div>
   
   <div class="machine-container">
