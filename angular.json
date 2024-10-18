@@ -71,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SizzlingHot2:build"
+            "buildTarget": "SizzlingHot2:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SizzlingHot2:build:production"
+              "buildTarget": "SizzlingHot2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SizzlingHot2:build"
+            "buildTarget": "SizzlingHot2:build"
           }
         },
         "test": {
